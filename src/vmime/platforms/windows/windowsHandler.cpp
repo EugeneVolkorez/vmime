@@ -26,6 +26,8 @@
 
 #if VMIME_PLATFORM_IS_WINDOWS
 
+//fix vs2008 build
+#define _WINSOCKAPI_
 
 #include "vmime/platforms/windows/windowsHandler.hpp"
 
