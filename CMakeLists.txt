@@ -106,7 +106,16 @@ IF(VMIME_BUILD_SHARED_LIBRARY)
 		VERSION    "${VMIME_API_VERSION}"
 		SOVERSION  "${VMIME_API_VERSION_CURRENT}"
 	)
-
+  
+  #add 'd' prefix for debug libraries
+  IF (WIN32)
+    SET_TARGET_PROPERTIES(
+      ${VMIME_LIBRARY_NAME}
+      PROPERTIES
+      DEBUG_OUTPUT_NAME ${VMIME_LIBRARY_NAME}d
+    )
+  ENDIF()
+  
 ENDIF()
 
 # Static library
@@ -134,6 +143,15 @@ IF(VMIME_BUILD_STATIC_LIBRARY)
 		OUTPUT_NAME  ${VMIME_LIBRARY_NAME}
 	)
 
+  #add 'd' prefix for debug libraries
+  IF (WIN32)
+    SET_TARGET_PROPERTIES(
+      ${VMIME_LIBRARY_NAME}-static
+      PROPERTIES
+      DEBUG_OUTPUT_NAME ${VMIME_LIBRARY_NAME}d
+    )
+  ENDIF()
+  
 ENDIF()
 
 # Ensure at least one type of library (either shared or static) is build
