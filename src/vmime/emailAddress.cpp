@@ -512,8 +512,6 @@ void emailAddress::parseImpl
 	{
 		if (state == State_DomainPartMiddle)
 			state = State_End;
-		else if (state == State_LocalPartMiddle)
-			state = State_End;  // allow not specifying domain part
 	}
 
 	if (state != State_End)
@@ -525,7 +523,7 @@ void emailAddress::parseImpl
 	{
 		// If the domain part is missing, use local host name
 		if (domainPart.str().empty() && !atFound)
-			domainPart << platform::getHandler()->getHostName();
+			domainPart << "invalid";
 
 		if (localPartIsRFC2047)
 			m_localName.parse(localPart.str());
