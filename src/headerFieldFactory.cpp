@@ -52,7 +52,6 @@ headerFieldFactory::headerFieldFactory()
 	registerField <mailboxField>(vmime::fields::FROM);
 	registerField <mailboxField>(vmime::fields::SENDER);
 	registerField <mailboxField>(vmime::fields::REPLY_TO);
-	registerField <mailboxField>(vmime::fields::DELIVERED_TO);
 
 	// Register standard field values
 	registerFieldValue <mailbox>(vmime::fields::FROM);
@@ -64,7 +63,7 @@ headerFieldFactory::headerFieldFactory()
 	registerFieldValue <relay>(vmime::fields::RECEIVED);
 	registerFieldValue <text>(vmime::fields::SUBJECT);
 	registerFieldValue <mailbox>(vmime::fields::REPLY_TO);
-	registerFieldValue <mailbox>(vmime::fields::DELIVERED_TO);
+	registerFieldValue <text>(vmime::fields::DELIVERED_TO);
 	registerFieldValue <text>(vmime::fields::ORGANIZATION);
 	registerFieldValue <text>(vmime::fields::USER_AGENT);
 	registerFieldValue <path>(vmime::fields::RETURN_PATH);
