@@ -52,13 +52,15 @@ headerFieldFactory::headerFieldFactory()
 	registerField <mailboxField>(vmime::fields::SENDER);
 
 	// Register standard field values
-    //cCHIP: according to rfc6854 FROM, REPLY_TO are addressLists,  SENDER is 'address'.
+    //cCHIP: according to rfc6854 RESENT_FROM, FROM, REPLY_TO are addressLists, RESENT_SENDER, SENDER is 'address'.
 	registerFieldValue <addressList>(vmime::fields::FROM);
+    registerFieldValue <addressList>(vmime::fields::RESENT_FROM);
 	registerFieldValue <addressList>(vmime::fields::TO);
 	registerFieldValue <addressList>(vmime::fields::CC);
 	registerFieldValue <addressList>(vmime::fields::BCC);
     //cCHIP: FIXME use 'address' here
 	registerFieldValue <mailbox>(vmime::fields::SENDER);
+    registerFieldValue <mailbox>(vmime::fields::RESENT_SENDER);
 	registerFieldValue <datetime>(vmime::fields::DATE);
 	registerFieldValue <relay>(vmime::fields::RECEIVED);
 	registerFieldValue <text>(vmime::fields::SUBJECT);

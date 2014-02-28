@@ -175,6 +175,8 @@ namespace vmime
 		extern const string::value_type* const FROM;
 		extern const string::value_type* const SENDER;
 		extern const string::value_type* const REPLY_TO;
+        extern const string::value_type* const RESENT_FROM;
+        extern const string::value_type* const RESENT_SENDER;
 		extern const string::value_type* const TO;
 		extern const string::value_type* const CC;
 		extern const string::value_type* const BCC;

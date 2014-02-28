@@ -164,6 +164,8 @@ namespace fields
 	const string::value_type* const RECEIVED = "Received";
 	const string::value_type* const FROM = "From";
 	const string::value_type* const SENDER = "Sender";
+    const string::value_type* const RESENT_FROM = "Resent-From";
+    const string::value_type* const RESENT_SENDER = "Resent-Sender";
 	const string::value_type* const REPLY_TO = "Reply-To";
 	const string::value_type* const TO = "To";
 	const string::value_type* const CC = "Cc";
