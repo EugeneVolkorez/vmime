@@ -49,20 +49,20 @@ headerFieldFactory::headerFieldFactory()
 	registerField <parameterizedHeaderField>(vmime::fields::CONTENT_TRANSFER_ENCODING);
 	registerField <contentDispositionField>(vmime::fields::CONTENT_DISPOSITION);
 
-	registerField <mailboxField>(vmime::fields::FROM);
 	registerField <mailboxField>(vmime::fields::SENDER);
-	registerField <mailboxField>(vmime::fields::REPLY_TO);
 
 	// Register standard field values
-	registerFieldValue <mailbox>(vmime::fields::FROM);
+    //cCHIP: according to rfc6854 FROM, REPLY_TO are addressLists,  SENDER is 'address'.
+	registerFieldValue <addressList>(vmime::fields::FROM);
 	registerFieldValue <addressList>(vmime::fields::TO);
 	registerFieldValue <addressList>(vmime::fields::CC);
 	registerFieldValue <addressList>(vmime::fields::BCC);
+    //cCHIP: FIXME use 'address' here
 	registerFieldValue <mailbox>(vmime::fields::SENDER);
 	registerFieldValue <datetime>(vmime::fields::DATE);
 	registerFieldValue <relay>(vmime::fields::RECEIVED);
 	registerFieldValue <text>(vmime::fields::SUBJECT);
-	registerFieldValue <mailbox>(vmime::fields::REPLY_TO);
+	registerFieldValue <addressList>(vmime::fields::REPLY_TO);
 	registerFieldValue <text>(vmime::fields::DELIVERED_TO);
 	registerFieldValue <text>(vmime::fields::ORGANIZATION);
 	registerFieldValue <text>(vmime::fields::USER_AGENT);
