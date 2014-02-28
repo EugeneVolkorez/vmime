@@ -58,11 +58,13 @@ headerFieldFactory::headerFieldFactory()
 	// Register standard field values
 	//ccmip: according to rfc6854 FROM and REPLY_TO are addressLists
 	registerFieldValue <addressList>(vmime::fields::FROM);
+	registerFieldValue <addressList>(vmime::fields::RESENT_FROM);
 	registerFieldValue <addressList>(vmime::fields::TO);
 	registerFieldValue <addressList>(vmime::fields::CC);
 	registerFieldValue <addressList>(vmime::fields::BCC);
 	//ccmip: FIXME according to rfc6854 SENDER should be 'address' rather than 'mailbox'
 	registerFieldValue <mailbox>(vmime::fields::SENDER);
+	registerFieldValue <mailbox>(vmime::fields::RESENT_SENDER);
 	registerFieldValue <datetime>(vmime::fields::DATE);
 	registerFieldValue <relay>(vmime::fields::RECEIVED);
 	registerFieldValue <text>(vmime::fields::SUBJECT);

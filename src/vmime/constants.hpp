@@ -174,6 +174,8 @@ namespace vmime
 		extern VMIME_EXPORT const char* const RECEIVED;
 		extern VMIME_EXPORT const char* const FROM;
 		extern VMIME_EXPORT const char* const SENDER;
+		extern VMIME_EXPORT const char* const RESENT_FROM;
+		extern VMIME_EXPORT const char* const RESENT_SENDER;
 		extern VMIME_EXPORT const char* const REPLY_TO;
 		extern VMIME_EXPORT const char* const TO;
 		extern VMIME_EXPORT const char* const CC;

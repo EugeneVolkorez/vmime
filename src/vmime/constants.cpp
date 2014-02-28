@@ -164,6 +164,8 @@ namespace fields
 	const char* const RECEIVED = "Received";
 	const char* const FROM = "From";
 	const char* const SENDER = "Sender";
+	const char* const RESENT_FROM = "Resent-From";
+	const char* const RESENT_SENDER = "Resent-Sender";
 	const char* const REPLY_TO = "Reply-To";
 	const char* const TO = "To";
 	const char* const CC = "Cc";
