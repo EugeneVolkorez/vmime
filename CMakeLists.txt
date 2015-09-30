@@ -34,6 +34,11 @@ SET(CMAKE_VERBOSE_MAKEFILE ON)
 # Project
 PROJECT(vmime)
 
+#ccmip-specific setting
+IF(CCMIP_CXX_FLAGS)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CCMIP_CXX_FLAGS}")
+ENDIF()
+
 # Package version number
 SET(VMIME_VERSION_MAJOR  0)
 SET(VMIME_VERSION_MINOR  9)
