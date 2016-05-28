@@ -66,7 +66,7 @@ const shared_ptr <const contentHandler> parsedMessageAttachment::getData() const
 
 		m_msg->generate(os);
 
-		m_data = make_shared <stringContentHandler>(oss.str());
+		m_data = vmime::make_shared <stringContentHandler>(oss.str());
 	}
 
 	return m_data;

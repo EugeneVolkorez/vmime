@@ -272,7 +272,7 @@ void text::createFromString(const string& in, const charset& ch)
 	// If there are "too much" non-ASCII chars, encode everything
 	if (alwaysEncode || asciiPercent < 60)  // less than 60% ASCII chars
 	{
-		appendWord(make_shared <word>(in, ch));
+		appendWord(vmime::make_shared <word>(in, ch));
 	}
 	// Else, only encode words which need it
 	else
@@ -307,7 +307,7 @@ void text::createFromString(const string& in, const charset& ch)
 							w->getBuffer() += ' ';
 						}
 
-						appendWord(make_shared <word>(chunk, ch));
+						appendWord(vmime::make_shared <word>(chunk, ch));
 
 						prevIs8bit = true;
 						++count;
@@ -322,7 +322,7 @@ void text::createFromString(const string& in, const charset& ch)
 					}
 					else
 					{
-						appendWord(make_shared <word>
+						appendWord(vmime::make_shared <word>
 							(chunk, charset(charsets::US_ASCII)));
 
 						prevIs8bit = false;

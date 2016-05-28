@@ -173,7 +173,7 @@ bool charset::operator!=(const charset& value) const
 
 shared_ptr <component> charset::clone() const
 {
-	return make_shared <charset>(m_name);
+	return vmime::make_shared <charset>(m_name);
 }
 
 

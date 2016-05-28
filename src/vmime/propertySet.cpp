@@ -174,7 +174,7 @@ void propertySet::parse(const string& props)
 				}
 			}
 
-			m_props.push_back(make_shared <property>(option, value));
+			m_props.push_back(vmime::make_shared <property>(option, value));
 		}
 	}
 }
@@ -200,7 +200,7 @@ shared_ptr <propertySet::property> propertySet::findOrCreate(const string& name)
 	}
 	else
 	{
-		shared_ptr <property> prop = make_shared <property>(name, "");
+		shared_ptr <property> prop = vmime::make_shared <property>(name, "");
 		m_props.push_back(prop);
 		return (prop);
 	}

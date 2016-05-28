@@ -133,7 +133,7 @@ shared_ptr <word> word::parseNext
 				if (state->prevIsEncoded && !state->isFirst)
 					unencoded = whiteSpaces + unencoded;
 
-				shared_ptr <word> w = make_shared <word>(unencoded, defaultCharset);
+				shared_ptr <word> w = vmime::make_shared <word>(unencoded, defaultCharset);
 				w->setParsedBounds(position, pos);
 
 				if (newPosition)
@@ -216,7 +216,7 @@ shared_ptr <word> word::parseNext
 	// Treat unencoded text at the end of the buffer
 	if (!unencoded.empty())
 	{
-		shared_ptr <word> w = make_shared <word>(unencoded, defaultCharset);
+		shared_ptr <word> w = vmime::make_shared <word>(unencoded, defaultCharset);
 		w->setParsedBounds(position, end);
 
 		if (newPosition)
@@ -809,7 +809,7 @@ const string word::getConvertedText(const charset& dest, const charsetConverterO
 
 shared_ptr <component> word::clone() const
 {
-	return make_shared <word>(m_buffer, m_charset);
+	return vmime::make_shared <word>(m_buffer, m_charset);
 }
 
 

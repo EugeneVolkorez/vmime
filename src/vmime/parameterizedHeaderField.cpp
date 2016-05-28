@@ -321,7 +321,7 @@ void parameterizedHeaderField::parseImpl
 			const paramInfo& info = (*it).second;
 
 			// Append this parameter to the list
-			shared_ptr <parameter> param = make_shared <parameter>((*it).first);
+			shared_ptr <parameter> param = vmime::make_shared <parameter>((*it).first);
 
 			param->parse(ctx, info.value);
 			param->setParsedBounds(info.start, info.end);
@@ -442,7 +442,7 @@ shared_ptr <parameter> parameterizedHeaderField::getParameter(const string& para
 	// If no parameter with this name can be found, create a new one
 	if (pos == end)
 	{
-		shared_ptr <parameter> param = make_shared <parameter>(paramName);
+		shared_ptr <parameter> param = vmime::make_shared <parameter>(paramName);
 
 		appendParameter(param);
 

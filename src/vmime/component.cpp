@@ -169,10 +169,10 @@ void component::parseImpl
 	// actually, we encapsulate the string buffer in an input stream, then use
 	// the "parse from input stream" implementation
 	shared_ptr <utility::seekableInputStream> stream =
-		make_shared <utility::inputStreamStringAdapter>(buffer);
+		vmime::make_shared <utility::inputStreamStringAdapter>(buffer);
 
 	shared_ptr <utility::parserInputStreamAdapter> parser =
-		make_shared <utility::parserInputStreamAdapter>(stream);
+		vmime::make_shared <utility::parserInputStreamAdapter>(stream);
 
 	parseImpl(ctx, parser, position, end, newPosition);
 }

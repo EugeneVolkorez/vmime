@@ -343,17 +343,17 @@ void windowsFile::remove()
 
 shared_ptr <vmime::utility::fileWriter> windowsFile::getFileWriter()
 {
-	return make_shared <windowsFileWriter>(m_path, m_nativePath);
+    return vmime::make_shared <windowsFileWriter>( m_path, m_nativePath );
 }
 
 shared_ptr <vmime::utility::fileReader> windowsFile::getFileReader()
 {
-	return make_shared <windowsFileReader>(m_path, m_nativePath);
+	return vmime::make_shared <windowsFileReader>(m_path, m_nativePath);
 }
 
 shared_ptr <vmime::utility::fileIterator> windowsFile::getFiles() const
 {
-	return make_shared <windowsFileIterator>(m_path, m_nativePath);
+    return vmime::make_shared <windowsFileIterator>( m_path, m_nativePath );
 }
 
 void windowsFile::createDirectoryImpl(const vmime::utility::file::path& fullPath, const vmime::utility::file::path& path, const bool recursive)

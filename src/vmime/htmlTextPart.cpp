@@ -176,7 +176,7 @@ void htmlTextPart::addEmbeddedObject(const bodyPart& part, const string& id,
 		// No "Content-type" field: assume "application/octet-stream".
 	}
 
-	m_objects.push_back(make_shared <embeddedObject>
+	m_objects.push_back(vmime::make_shared <embeddedObject>
 		(vmime::clone(part.getBody()->getContents()),
 		 part.getBody()->getEncoding(), id, type, refType));
 }
@@ -409,7 +409,7 @@ shared_ptr <const htmlTextPart::embeddedObject> htmlTextPart::addObject
 {
 	const messageId mid(messageId::generateId());
 
-	shared_ptr <embeddedObject> obj = make_shared <embeddedObject>
+	shared_ptr <embeddedObject> obj = vmime::make_shared <embeddedObject>
 		(data, enc, mid.getId(), type, embeddedObject::REFERENCED_BY_ID);
 
 	m_objects.push_back(obj);
@@ -428,7 +428,7 @@ shared_ptr <const htmlTextPart::embeddedObject> htmlTextPart::addObject
 shared_ptr <const htmlTextPart::embeddedObject> htmlTextPart::addObject
 	(const string& data, const mediaType& type)
 {
-	shared_ptr <stringContentHandler> cts = make_shared <stringContentHandler>(data);
+	shared_ptr <stringContentHandler> cts = vmime::make_shared <stringContentHandler>(data);
 	return addObject(cts, encoding::decide(cts), type);
 }
 

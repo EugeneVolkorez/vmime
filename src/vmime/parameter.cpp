@@ -48,7 +48,7 @@ parameter::parameter(const string& name, const word& value)
 
 
 parameter::parameter(const string& name, const string& value)
-	: m_name(name), m_value(make_shared <word>(value))
+	: m_name(name), m_value(vmime::make_shared <word>(value))
 {
 }
 
@@ -61,7 +61,7 @@ parameter::parameter(const parameter&)
 
 shared_ptr <component> parameter::clone() const
 {
-	shared_ptr <parameter> p = make_shared <parameter>(m_name);
+	shared_ptr <parameter> p = vmime::make_shared <parameter>(m_name);
 	p->copyFrom(*this);
 
 	return (p);

@@ -198,7 +198,7 @@ shared_ptr <bodyPart> MDNHelper::createFirstMDNPart(const sendableMDNInfos& /* m
 	dynamicCast <contentTypeField>(hdr->ContentType())->setCharset(ch);
 
 	// Body
-	part->getBody()->setContents(make_shared <stringContentHandler>(text));
+	part->getBody()->setContents(vmime::make_shared <stringContentHandler>(text));
 
 	return (part);
 }
@@ -320,7 +320,7 @@ shared_ptr <bodyPart> MDNHelper::createSecondMDNPart(const sendableMDNInfos& mdn
 
 	fields.generate(vos);
 
-	part->getBody()->setContents(make_shared <stringContentHandler>(oss.str()));
+	part->getBody()->setContents(vmime::make_shared <stringContentHandler>(oss.str()));
 
 	return (part);
 }
@@ -343,7 +343,7 @@ shared_ptr <bodyPart> MDNHelper::createThirdMDNPart(const sendableMDNInfos& mdnI
 
 	mdnInfos.getMessage()->getHeader()->generate(vos);
 
-	part->getBody()->setContents(make_shared <stringContentHandler>(oss.str()));
+	part->getBody()->setContents(vmime::make_shared <stringContentHandler>(oss.str()));
 
 	return (part);
 }
