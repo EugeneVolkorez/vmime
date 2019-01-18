@@ -49,6 +49,6 @@ IF NOT EXIST %BUILD_DIR% mkdir %BUILD_DIR%
 cd %BUILD_DIR%
 del /q CMakeCache.txt
 
-echo cmake %SOURCE_DIR% -G "Visual Studio 12 2013" %VMIME_CONFIG%
-cmake %SOURCE_DIR% -G "Visual Studio 12 2013" %VMIME_CONFIG%
+echo cmake %SOURCE_DIR% -G "Visual Studio 15 2017" %VMIME_CONFIG%
+cmake %SOURCE_DIR% -G "Visual Studio 15 2017" %VMIME_CONFIG%
 exit /b %ERRORLEVEL%

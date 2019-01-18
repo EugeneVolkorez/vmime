@@ -1,8 +1,10 @@
 setlocal
 
-::cd "%CD%\build"
+set arch=x86
+::this VSCMD_START_DIR is a workaround so VsDevCmd does not change current dir
+set "VSCMD_START_DIR=%CD%"
+CALL "%VS150COMNTOOLS%\VsDevCmd.bat" -arch=%arch% || exit /b 1
 
-CALL "%VS120COMNTOOLS%\vsvars32.bat" > nul
 msbuild vmime.sln /p:Configuration=Release || goto :error
 msbuild INSTALL.vcxproj /p:Configuration=Release || goto :error
 
