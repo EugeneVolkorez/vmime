@@ -40,6 +40,13 @@ PROJECT(vmime)
 IF(CCMIP_CXX_FLAGS)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CCMIP_CXX_FLAGS}")
 ENDIF()
+IF(CCMIP_CXX_FLAGS_RELEASE)
+    message(STATUS "!!!!!!!!!!!!!Setting CXX flags!!!!!!!!!!!!!!!! ${CMAKE_CXX_FLAGS_RELEASE} ${CCMIP_CXX_FLAGS_RELEASE}")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${CCMIP_CXX_FLAGS_RELEASE}")
+    message(STATUS "!!!!!!!!!!!!!Setting CXX flags!!!!!!!!!!!!!!!! ${CMAKE_CXX_FLAGS_RELEASE}")
+ELSE()
+    message(WARNING "!!!!!!!!!!!!!CXX flags not set!!!!!!!!!!!!!!!!")
+ENDIF()
 
 # Package version number
 SET(VMIME_VERSION_MAJOR  0)
