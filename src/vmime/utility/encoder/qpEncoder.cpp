@@ -102,10 +102,10 @@ const vmime_uint8 qpEncoder::sm_hexDecodeTable[256] =
 	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
 	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
 	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
-	 0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  0,  0,  0,  0,  0,  0,
-	 0, 10, 11, 12, 13, 14, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 1,  2,  3,  4,  5,  6,  7,  8,  9,  10,  0,  0,  0,  0,  0,  0,
+	 0, 11, 12, 13, 14, 15, 16,  0,  0,  0,  0,  0,  0,  0,  0,  0,
 	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
-	 0, 10, 11, 12, 13, 14, 15,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+	 0, 11, 12, 13, 14, 15, 16,  0,  0,  0,  0,  0,  0,  0,  0,  0,
 	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
 	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
 	 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
@@ -462,6 +462,13 @@ size_t qpEncoder::decode(utility::inputStream& in,
 				// Hex-encoded char
 				default:
 				{
+                    const byte_t c1 = sm_hexDecodeTable[c];
+                    if(c1 == 0) {
+                        outBuffer[outBufferPos++] = '=';
+                        outBuffer[outBufferPos++] = c;
+                        break;
+                    }
+
 					// We need another byte...
 					if (bufferPos >= bufferLength)
 					{
@@ -475,8 +482,16 @@ size_t qpEncoder::decode(utility::inputStream& in,
 
 						++inTotal;
 
+                        const byte_t c2 = sm_hexDecodeTable[next];
+                        if(c2 == 0) {
+                            outBuffer[outBufferPos++] = '=';
+                            outBuffer[outBufferPos++] = c;
+                            outBuffer[outBufferPos++] = next;
+                            break;
+                        }
+
 						const byte_t value = static_cast <byte_t>
-							(sm_hexDecodeTable[c] * 16 + sm_hexDecodeTable[next]);
+							((c1 - 1) * 16 + c2 - 1);
 
 						outBuffer[outBufferPos++] = value;
 					}
